@@ -4,7 +4,6 @@
 #include <lvgl.h>
 #include <Wire.h>
 #include "pin_config.h"
-#include "Arduino_GFX_Library.h"
 #include "HWCDC.h"
 HWCDC USBSerial;
 
