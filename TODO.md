@@ -6,7 +6,7 @@
 - [x] Decide display driver: **ILI9341** or **ST7789**.
 - [x] Decide touch backend: **XPT2046_Touchscreen** or **Arduino_TouchBus** family.
 - [ ] Add a unified `hardware.h`:
-  - [ ] Declare a single `DisplayT` typedef and `extern DisplayT tft;`
+  - [x] Declare a single `DisplayT` typedef and `extern DisplayT tft;`
   - [ ] Declare a single touch symbol (e.g., `extern XPT2046_Touchscreen ts;`)
 - [ ] Refactor all modules to include `hardware.h`; remove conflicting `extern` declarations.
 - [ ] Ensure exactly **one** definition of `tft` and the touch symbol exists.
