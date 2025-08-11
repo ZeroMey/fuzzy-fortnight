@@ -70,46 +70,6 @@ void updateWatchPage() {
     lv_label_set_text(battery_label, batteryStr);
 }
 
-// Function to handle swipe gestures for page switching
-void handleSwipeGesture() {
-    // Check if the screen is touched
-    if (touchBus.isTouched()) {
-        TS_Point p = touchBus.getPoint(); // Get the current touch point
-
-        if (startX == -1 && startY == -1) {
-            // First touch event, set initial touch position
-            startX = p.x;
-            startY = p.y;
-            isTouching = true;
-        }
-
-        endX = p.x;
-        endY = p.y;
-
-        // If the user has lifted the finger
-        if (!touchBus.isTouched() && isTouching) {
-            int deltaX = endX - startX;
-            int deltaY = endY - startY;
-
-            // Check if the movement is mostly horizontal (detect swipe)
-            if (abs(deltaY) < 50) { // Allow some vertical tolerance for swipe
-                if (deltaX > 100) {
-                    // Swipe right: Navigate to health page
-                    lv_scr_load(health_page);
-                } else if (deltaX < -100) {
-                    // Swipe left: Navigate to screensaver page
-                    lv_scr_load(screensaver_page);
-                }
-            }
-
-            // Reset touch positions
-            startX = -1;
-            startY = -1;
-            isTouching = false;
-        }
-    }
-}
-
 // Function to simulate time and battery decrease (for testing purposes)
 void simulateWatchPage() {
     updateWatchPage();
