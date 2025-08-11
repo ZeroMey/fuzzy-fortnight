@@ -3,6 +3,7 @@
 Skeleton firmware for an LVGL-based watch/GUI: display and input managers plus UI pages (watch, telemetry, health, screensaver).
 
 ## Repository layout
+```
 .
 ├─ src/
 │ ├─ screensaver_page.[h|cpp]
@@ -17,6 +18,7 @@ Skeleton firmware for an LVGL-based watch/GUI: display and input managers plus U
 │ └─ fourpages/
 │ └─ fourpages.ino
 └─ README.md
+```
 
 ## Modules
 
