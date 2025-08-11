@@ -1,6 +1,4 @@
 #include "screensaver_page.h"
-#include <Adafruit_GFX.h>        // GFX library for display support
-#include <Adafruit_ST7789.h>     // ST7789V2 display driver
 
 // Global page object and label variables
 lv_obj_t *screensaver_page;       // Current screensaver page object
