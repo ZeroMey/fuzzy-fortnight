@@ -12,29 +12,33 @@
   // Pages
   // Purpose: Each page manages a distinct UI state and content.
 
-    /screensaver_page.h
+  /screensaver_page.h
       Handles the idle screen. It could be activated by accelerometer motion and may show
         a simple clock or a sleeping indicator. This page should be lightweight, using minimal resources
         and triggered by inactivity or motion.
-    /watch_page.h
+  /watch_page.h
       watch_page.h: The main UI page where the time, date, and possibly 
         some additional information (like battery level) are displayed.
-    /health_page.h
+  /health_page.h
       health_page.h: Displays health-related data like heart rate (from MAX30102), SpO2,
         and potentially trends over time.
-    /telemetry_page.h
+  /telemetry_page.h
       telemetry_page.h: Displays all sensor data such as temperature (from MLX90614), 
         ambient light (from TEMT6000), temperature and humidity (from DHT22), etc. 
         This page could have dynamic graphs or data updates.
 
   //Sensor Modules (max30102_sensor.h, mlx90614-dss_sensor.h, etc.)
   //Each sensor will have its own module to manage initialization, data reading, and sensor-specific functions.
-    /max30102_sensor.h
-    /mlx90614-dss_sensor.h
-    /temt6000_sensor.h
-    /dht22_sensor.h
-    /QMI8658.h
-    /SEN0502.h
+
+  /max30102_sensor.h
+  /mlx90614-dss_sensor.h
+  /temt6000_sensor.h
+  /dht22_sensor.h
+  /QMI8658.h
+  /SEN0502.h
+
+  // Other 
+  // Purpose: Manages touchscreen, display, utilities and power
 
   /touchscreen.h
     Purpose: Manage touchscreen input for detecting gestures such as swipes and taps.
