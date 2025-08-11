@@ -16,7 +16,7 @@
 - [x] Keep `initDisplay()` in **display_manager.cpp** and declare in **display_manager.h**.
 - [x] Keep `initTouchscreen()` and `handleTouchInput()` in **touchscreen.cpp** and declare in **touchscreen.h**.
 - [x] Remove/rename duplicates in **main.cpp** and **watch_page.cpp**.
-- [ ] Mark page‑local helpers `static` (or wrap in an anonymous namespace).
+- [x] Mark page‑local helpers `static` (or wrap in an anonymous namespace).
 - [x] Build check: no multiple‑definition link errors for these symbols.
 
 ## 3) Global UI symbol collisions (LVGL labels)
