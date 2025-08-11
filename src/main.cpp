@@ -5,8 +5,11 @@
 #include <Adafruit_GFX.h>
 #include <Adafruit_ILI9341.h>
 #include <Wire.h>
-#include <SPI.h>
-#include <XPT2046_Touchscreen.h>
+#include "pin_config.h"
+#include "Arduino_GFX_Library.h"
+#include "Arduino_DriveBus_Library.h"
+#include "HWCDC.h"
+HWCDC USBSerial;
 
 #include "watch_page.h"
 #include "telemetry_page.h"
