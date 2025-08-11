@@ -3,9 +3,8 @@
 > Canonicalize this list as GitHub Issues (one Issue per checkbox). Use this file only as an index.
 
 ## 1) Hardware backends (display & touch)
-- [ ] Add a unified `hardware.h`:
-  - [x] Declare a single `DisplayT` typedef and `extern DisplayT tft;`
-  - [ ] Declare a single touch symbol (e.g., `extern XPT2046_Touchscreen ts;`)
+- [ ] Resolve Display implementation
+- [ ] Resolve Touch implementation
 
 ## 2) Global UI symbol collisions (LVGL labels)
 - [ ] Make page labels file‑local or uniquely named:
