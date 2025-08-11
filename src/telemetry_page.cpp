@@ -1,6 +1,4 @@
 #include "telemetry_page.h"
-#include <Adafruit_GFX.h>        // GFX library for display support
-#include <Adafruit_ST7789.h>     // ST7789V2 display driver
 #include <Wire.h>                // I2C library for sensor communication
 
 // Global display object
