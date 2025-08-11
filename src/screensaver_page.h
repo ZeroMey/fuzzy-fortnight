@@ -5,6 +5,6 @@
 
 void createScreensaverPage();      // Setup screensaver page layout
 void updateScreensaverPage();      // Update content or handle events
-void activateScreensaver();        // Activate screensaver (e.g., idle mode)
+void activateScreensaverPage();        // Activate screensaver (e.g., idle mode)
 
 #endif
