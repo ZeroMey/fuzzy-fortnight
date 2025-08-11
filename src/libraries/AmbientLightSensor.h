@@ -1,5 +1,5 @@
-#ifndef AmbientLightSensor_H
-#define AmbientLightSensor_H
+#ifndef AMBIENTLIGHTSENSOR_H
+#define AMBIENTLIGHTSENSOR_H
 
 #include <Arduino.h>
 
