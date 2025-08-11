@@ -188,20 +188,3 @@ void initRotaryEncoder() {
   // Initialize SEN0502 rotary encoder
   // sen.begin();
 }
-
-// ---------------------- Touch helpers (from original sketch) ------------------------
-
-// Initialize the touchscreen (XPT2046)
-void initTouchscreen() {
-  ts.begin();
-  ts.setRotation(3); // Set the touchscreen rotation to match display
-}
-
-// Touch input handler function
-void handleTouchInput() {
-  if (ts.touched()) {
-    TS_Point p = ts.getPoint(); // Get touch coordinates
-    // Handle touch gestures (e.g., swipe, tap) and update LVGL accordingly
-    // For example, use touch input to navigate between pages
-  }
-}
