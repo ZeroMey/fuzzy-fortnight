@@ -2,12 +2,9 @@
 
 #include <Arduino.h>
 #include <lvgl.h>
-#include <Adafruit_GFX.h>
-#include <Adafruit_ST7789.h>
 #include <Wire.h>
 #include "pin_config.h"
 #include "Arduino_GFX_Library.h"
-#include "Arduino_DriveBus_Library.h"
 #include "HWCDC.h"
 HWCDC USBSerial;
 
