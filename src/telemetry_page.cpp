@@ -10,13 +10,13 @@ lv_obj_t *ir_temp_label;        // IR temperature label
 lv_obj_t *status_label;         // Status label
 
 // DHT22 sensor object (for temperature and humidity)
-DHT dht(2, DHT22);  // DHT sensor on pin 2 (adjust as needed)
+//DHT dht(2, DHT22);  // DHT sensor on pin 2 (adjust as needed)
 
 // TEMT6000 ambient light sensor object
-TEMT6000 lightSensor(A0);  // Analog input pin for the TEMT6000
+//TEMT6000 lightSensor(A0);  // Analog input pin for the TEMT6000
 
 // MLX90614 IR temperature sensor object
-MLX90614 mlx;
+//MLX90614 mlx;
 
 // Function to create the Telemetry page UI elements
 void createTelemetryPage() {
