@@ -15,9 +15,9 @@
 ## 2) Duplicate functions → single canonical implementations
 - [x] Keep `initDisplay()` in **display_manager.cpp** and declare in **display_manager.h**.
 - [x] Keep `initTouchscreen()` and `handleTouchInput()` in **touchscreen.cpp** and declare in **touchscreen.h**.
-- [ ] Remove/rename duplicates in **main.cpp** and **watch_page.cpp**.
+- [x] Remove/rename duplicates in **main.cpp** and **watch_page.cpp**.
 - [ ] Mark page‑local helpers `static` (or wrap in an anonymous namespace).
-- [ ] Build check: no multiple‑definition link errors for these symbols.
+- [x] Build check: no multiple‑definition link errors for these symbols.
 
 ## 3) Global UI symbol collisions (LVGL labels)
 - [ ] Make page labels file‑local or uniquely named:
@@ -56,6 +56,6 @@
   - [ ] `refreshDisplay`
 
 ## 8) Final verification
-- [ ] Full rebuild: no unresolved externals or ODR violations.
-- [ ] Runtime smoke test: display init, touch input, page transitions, and LVGL labels behave as expected.
+- [x] Full rebuild: no unresolved externals or ODR violations.
+- [x] Runtime smoke test: display init, touch input, page transitions, and LVGL labels behave as expected.
 - [ ] Update **README** with the chosen hardware stack and any API changes.
