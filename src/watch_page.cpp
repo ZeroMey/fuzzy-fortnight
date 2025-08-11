@@ -1,7 +1,6 @@
 #include "watch_page.h"
 #include <Adafruit_GFX.h>        // GFX library for display support
 #include <Adafruit_ST7789.h>     // ST7789V2 display driver
-#include <Arduino_TouchBus.h>    // Touch input for CST816T
 
 // Global display object
 extern Adafruit_ST7789 tft;   // Create display object for ST7789 display
