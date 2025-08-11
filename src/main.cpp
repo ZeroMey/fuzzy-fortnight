@@ -154,37 +154,3 @@ static void healthPageTask(void *pvParameters) {
     vTaskDelay(pdMS_TO_TICKS(150));
   }
 }
-
-// ---------------------- Sensor init helpers (from original sketch) ------------------
-
-static void initPPGSensor() {
-  // Initialize MAX30102 heart rate & SpO2 sensor
-  // max30102.begin(); // Use your library’s init
-}
-
-static void initSkinTemperatureSensor() {
-  // Initialize MLX90614 IR temperature sensor
-  // mlx.begin();
-}
-
-static void initAmbientLightSensor() {
-  // Initialize TEMT6000 ambient light sensor (if needed)
-}
-
-void initAmbientTemperatureSensor() {
-  // Initialize DHT22 sensor for temperature and humidity
-  // dht.begin();
-}
-
-void initInertialSensor() {
-  // Initialize QMI8658 accelerometer
-  // if (!qmi8658.begin()) {
-  //   Serial.println("QMI8658 initialization failed!");
-  //   while (1) { delay(10); }
-  // }
-}
-
-void initRotaryEncoder() {
-  // Initialize SEN0502 rotary encoder
-  // sen.begin();
-}
