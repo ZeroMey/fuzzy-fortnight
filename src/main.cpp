@@ -7,16 +7,19 @@
 #include <Wire.h>
 #include <SPI.h>
 #include <XPT2046_Touchscreen.h>
+
 #include "watch_page.h"
 #include "telemetry_page.h"
 #include "screensaver_page.h"
 #include "health_page.h"
-#include "max30102_sensor.h"
-#include "mlx90614-dss_sensor.h"
-#include "temt6000_sensor.h"
-#include "dht22_sensor.h"
-#include "QMI8658.h"
-#include "SEN0502.h"
+
+#include "PPGSensor.h"
+#include "SkinTemperatureSensor.h"
+#include "AmbientLightSensor.h"
+#include "AmbientTemperatureSensor.h"
+#include "InertialSensor.h"
+#include "RotaryEncoder.h"
+
 #include "touchscreen.h"
 #include "display_manager.h"
 #include "utils.h"
@@ -35,11 +38,12 @@ TaskHandle_t healthPageTaskHandle;
 SEN0502 rotaryEncoder(33, 32);  // DFRobot Rotary Encoder connected to pins 33 and 32
 
 // Forward declarations for helper initializers (from original sketch)
-static void initMAX30102();
-static void initMLX90614();
-static void initTEMT6000();
-static void initDHT22();
-static void initQMI8658();
+static void initPPGSensor();
+static void initSkinTemperatureSensor();
+static void initAmbientLightSensor();
+static void initAmbientTemperatureSensor();
+static void initInertialSensor();
+static void initRotaryEncoder();
 
 // Page task entry points (as in the original sketch)
 static void watchPageTask(void *pvParameters);
@@ -70,11 +74,12 @@ void app_setup() {
   rotaryEncoder.begin();
 
   // Initialize sensors (as in original sketch; comment out those you don’t have wired)
-  initMAX30102();   // Heart rate / SpO2
-  initMLX90614();   // IR temperature
-  initTEMT6000();   // Ambient light
-  initDHT22();      // Temp/Humidity
-  initQMI8658();    // IMU (accelerometer/gyro)
+  initPPGSensor();                 // Heart rate / SpO2
+  initSkinTemperatureSensor();     // IR temperature
+  initAmbientLightSensor();        // Ambient light
+  initAmbientTemperatureSensor();  // Temp/Humidity
+  initInertialSensor();            // IMU (accelerometer/gyro)
+  initRotaryEncoder();             // Rotary Encoder
 
   // Create LVGL UI pages
   createWatchPage();
@@ -149,31 +154,36 @@ static void healthPageTask(void *pvParameters) {
 
 // ---------------------- Sensor init helpers (from original sketch) ------------------
 
-static void initMAX30102() {
+static void initPPGSensor() {
   // Initialize MAX30102 heart rate & SpO2 sensor
   // max30102.begin(); // Use your library’s init
 }
 
-static void initMLX90614() {
+static void initSkinTemperatureSensor() {
   // Initialize MLX90614 IR temperature sensor
   // mlx.begin();
 }
 
-static void initTEMT6000() {
+static void initAmbientLightSensor() {
   // Initialize TEMT6000 ambient light sensor (if needed)
 }
 
-void initDHT22() {
+void initAmbientTemperatureSensor() {
   // Initialize DHT22 sensor for temperature and humidity
   // dht.begin();
 }
 
-void initQMI8658() {
+void initInertialSensor() {
   // Initialize QMI8658 accelerometer
   // if (!qmi8658.begin()) {
   //   Serial.println("QMI8658 initialization failed!");
   //   while (1) { delay(10); }
   // }
+}
+
+void initRotaryEncoder() {
+  // Initialize SEN0502 rotary encoder
+  // sen.begin();
 }
 
 // ---------------------- Touch helpers (from original sketch) ------------------------
