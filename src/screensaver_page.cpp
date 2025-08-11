@@ -59,6 +59,11 @@ void handleScreensaverPageTouch() {
 }
 
 // Function to simulate screensaver updates (for testing purposes)
+void activateScreensaverPage() {
+    // Implement Wristflick
+}
+
+// Function to simulate screensaver updates (for testing purposes)
 void simulateScreensaverPage() {
     updateScreensaverPage();
     handleScreensaverPageTouch();  // Handle touch input for navigation
