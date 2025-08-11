@@ -23,7 +23,7 @@ HWCDC USBSerial;
 
 #include "main.h"
 
-// Global variables (mirrored from original sketch)
+// Global variables
 TaskHandle_t watchPageTaskHandle;
 TaskHandle_t telemetryPageTaskHandle;
 TaskHandle_t screensaverPageTaskHandle;
@@ -31,7 +31,7 @@ TaskHandle_t healthPageTaskHandle;
 
 //SEN0502 rotaryEncoder(33, 32);  // DFRobot Rotary Encoder connected to pins 33 and 32
 
-// Forward declarations for helper initializers (from original sketch)
+// Forward declarations for helper initializers
 static void initPPGSensor();
 static void initSkinTemperatureSensor();
 static void initAmbientLightSensor();
@@ -39,7 +39,7 @@ static void initAmbientTemperatureSensor();
 static void initInertialSensor();
 static void initRotaryEncoder();
 
-// Page task entry points (as in the original sketch)
+// Page task entry points
 static void watchPageTask(void *pvParameters);
 static void telemetryPageTask(void *pvParameters);
 static void screensaverPageTask(void *pvParameters);
@@ -53,7 +53,7 @@ void app_setup() {
   // Initialize LVGL
   lv_init();
 
-  // Initialize the display (Adafruit_ST7789 using GFX library)
+  // Initialize the display
   initDisplay();
 
   // Initialize the touchscreen
@@ -63,7 +63,7 @@ void app_setup() {
   Wire.begin();  // Initialize I2C (SDA/SCL default pins based on board)
   
   // Initialize SPI if required for certain sensors
-  SPI.begin();
+  //SPI.begin();
 
   // Initialize the rotary encoder
   //rotaryEncoder.begin();
@@ -82,7 +82,7 @@ void app_setup() {
   createHealthPage();
   createScreensaverPage();
 
-  // Create FreeRTOS tasks for each page (priorities/sizes per original)
+  // Create FreeRTOS tasks for each page
   xTaskCreatePinnedToCore(watchPageTask, "Watch Page Task", 4096, NULL, 1, &watchPageTaskHandle, 0);
   xTaskCreatePinnedToCore(telemetryPageTask, "Telemetry Page Task", 4096, NULL, 2, &telemetryPageTaskHandle, 0);
   xTaskCreatePinnedToCore(screensaverPageTask, "Screensaver Page Task", 4096, NULL, 1, &screensaverPageTaskHandle, 0);
