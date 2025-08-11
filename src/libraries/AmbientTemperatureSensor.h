@@ -1,4 +1,8 @@
-void initAmbientTemperatureSensor() {
-  // Initialize DHT22 sensor for temperature and humidity
-  // dht.begin();
-}
+#ifndef AMBIENTTEMPERATURESENSOR_H
+#define AMBIENTTEMPERATURESENSOR_H
+
+#include <Arduino.h>
+
+void initAmbientTemperatureSensor();        // Initialize TEMT6000 ambient light sensor
+
+#endif
