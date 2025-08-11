@@ -65,19 +65,6 @@ void handleScreensaverPageTouch() {
     }
 }
 
-// Function to initialize the display and touchscreen for the Screensaver
-void initScreensaverDisplay() {
-    // Initialize the TFT display (if not already initialized)
-    tft.begin();
-    tft.setRotation(3);  // Set the display rotation (adjust as needed)
-    tft.fillScreen(ST77XX_BLACK);  // Clear the display to black
-}
-
-void initScreensaverTouchscreen() {
-    touchBus.begin();  // Initialize the touch input
-    // You can adjust touch parameters if needed (e.g., calibrate, set rotation)
-}
-
 // Function to simulate screensaver updates (for testing purposes)
 void simulateScreensaverPage() {
     updateScreensaverPage();
