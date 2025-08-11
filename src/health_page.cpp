@@ -1,9 +1,4 @@
 #include "health_page.h"
-#include <Adafruit_GFX.h>        // GFX library for display support
-#include <Adafruit_ST7789.h>     // ST7789V2 display driver
-
-// Global display object
-extern Adafruit_ST7789 tft;   // Create display object for ST7789 display
 
 // Global page object and label variables
 lv_obj_t *health_page;         // Current health page object
