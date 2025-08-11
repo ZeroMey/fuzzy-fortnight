@@ -9,10 +9,12 @@ extern Adafruit_ST7789 tft;   // Create display object for ST7789 display
 
 // Function to initialize the display and prepare LVGL
 void initDisplay() {
+    Arduino_DataBus *bus = new Arduino_ESP32SPI(LCD_DC, LCD_CS, LCD_SCK, LCD_MOSI);
+    Arduino_GFX *gfx = new Arduino_ST7789(bus, LCD_RST /* RST */,
+                                      0 /* rotation */, true /* IPS */, LCD_WIDTH, LCD_HEIGHT, 0, 20, 0, 0);
     // Initialize the TFT display
-    tft.begin();
-    tft.setRotation(3);  // Set the display rotation (adjust as needed)
-    tft.fillScreen(ST77XX_BLACK);  // Clear the display to black
+    gfx->begin();
+    gfx->fillScreen(BLACK);
 
     // Initialize LVGL display buffer
     static lv_disp_buf_t disp_buf;
@@ -30,13 +32,13 @@ void initDisplay() {
 // Function to handle display flushing (called by LVGL)
 void my_disp_flush(lv_disp_drv_t *disp_drv, const lv_area_t *area, lv_color_t *color_p) {
     // This function sends the buffer data to the TFT display
-    tft.pushRect(area->x1, area->y1, area->x2 - area->x1 + 1, area->y2 - area->y1 + 1, (uint16_t *)color_p);
+    gfx->pushRect(area->x1, area->y1, area->x2 - area->x1 + 1, area->y2 - area->y1 + 1, (uint16_t *)color_p);
     lv_disp_flush_ready(disp_drv);  // Notify LVGL that the flush is done
 }
 
 // Function to clear the screen
 void clearDisplay() {
-    tft.fillScreen(ST77XX_BLACK);  // Clear the screen to black
+    gfx->fillScreen(ST77XX_BLACK);  // Clear the screen to black
 }
 
 // Function to update the display (called by LVGL)
