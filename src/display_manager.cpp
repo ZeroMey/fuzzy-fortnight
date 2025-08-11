@@ -1,9 +1,10 @@
-#include <lvgl.h>                // LVGL library for UI management
 #include "display_manager.h"
+#include <lvgl.h>
 #include "Arduino_GFX_Library.h"
 
 // Function to initialize the display and prepare LVGL
 void initDisplay() {
+    
     Arduino_DataBus *bus = new Arduino_ESP32SPI(LCD_DC, LCD_CS, LCD_SCK, LCD_MOSI);
     Arduino_GFX *gfx = new Arduino_ST7789(bus, LCD_RST /* RST */,
                                       0 /* rotation */, true /* IPS */, LCD_WIDTH, LCD_HEIGHT, 0, 20, 0, 0);
@@ -33,7 +34,7 @@ void my_disp_flush(lv_disp_drv_t *disp_drv, const lv_area_t *area, lv_color_t *c
 
 // Function to clear the screen
 void clearDisplay() {
-    gfx->fillScreen(ST77XX_BLACK);  // Clear the screen to black
+    gfx->fillScreen(BLACK);  // Clear the screen to black
 }
 
 // Function to update the display (called by LVGL)
