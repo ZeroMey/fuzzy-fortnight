@@ -6,6 +6,13 @@ Skeleton firmware for an LVGL-based watch/GUI: display and input managers plus U
 ```
 .
 ├─ src/
+│ ├─ libraries/
+│ │ ├─ AmbientLightSensor.[h|cpp]
+│ │ ├─ AmbientTemperatureSensor.[h|cpp]
+│ │ ├─ InertialSensor.[h|cpp]
+│ │ ├─ PPGSensor.[h|cpp]
+│ │ ├─ RotaryEncoder.[h|cpp]
+│ │ └─ SkinTemperatureSensor.[h|cpp]
 │ ├─ main.[h|cpp]
 │ ├─ screensaver_page.[h|cpp]
 │ ├─ watch_page.[h|cpp]
