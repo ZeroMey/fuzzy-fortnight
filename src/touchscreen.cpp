@@ -1,5 +1,6 @@
 #include "touchscreen.h"
 #include <Arduino_TouchBus.h>    // CST816T touch driver library
+#include "Arduino_DriveBus_Library.h"
 
 // Global touch input object
 extern Arduino_TouchBus touchBus;  // CST816T touch input object
