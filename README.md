@@ -6,6 +6,7 @@ Skeleton firmware for an LVGL-based watch/GUI: display and input managers plus U
 ```
 .
 ├─ src/
+│ ├─ main.[h|cpp]
 │ ├─ screensaver_page.[h|cpp]
 │ ├─ watch_page.[h|cpp]
 │ ├─ health_page.[h|cpp]
