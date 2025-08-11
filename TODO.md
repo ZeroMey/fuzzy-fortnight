@@ -3,14 +3,14 @@
 > Canonicalize this list as GitHub Issues (one Issue per checkbox). Use this file only as an index.
 
 ## 1) Hardware backends (display & touch)
-- [ ] Decide display driver: **ILI9341** or **ST7789**.
+- [x] Decide display driver: **ILI9341** or **ST7789**.
 - [ ] Decide touch backend: **XPT2046_Touchscreen** or **Arduino_TouchBus** family.
 - [ ] Add a unified `hardware.h`:
   - [ ] Declare a single `DisplayT` typedef and `extern DisplayT tft;`
   - [ ] Declare a single touch symbol (e.g., `extern XPT2046_Touchscreen ts;`)
 - [ ] Refactor all modules to include `hardware.h`; remove conflicting `extern` declarations.
 - [ ] Ensure exactly **one** definition of `tft` and the touch symbol exists.
-- [ ] Build check: no type mismatches across translation units.
+- [x] Build check: no type mismatches across translation units.
 
 ## 2) Duplicate functions → single canonical implementations
 - [x] Keep `initDisplay()` in **display_manager.cpp** and declare in **display_manager.h**.
