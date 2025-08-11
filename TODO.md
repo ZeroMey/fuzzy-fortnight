@@ -44,7 +44,7 @@
 - [ ] If deferred, wrap with feature macros (e.g., `#if defined(HAVE_MAX30102)` … `#endif`).
 
 ## 6) Declared but not defined
-- [ ] Implement `void activateScreensaver();` (declared in **screensaver_page.h**) or remove the declaration.
+- [x] Implement `void activateScreensaver();` (declared in **screensaver_page.h**) or remove the declaration.
 
 ## 7) Internal helper linkage hygiene
 - [ ] In **display_manager.cpp**, make TU‑local helpers `static`/anonymous namespace:
