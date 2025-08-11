@@ -13,8 +13,8 @@
 - [ ] Build check: no type mismatches across translation units.
 
 ## 2) Duplicate functions → single canonical implementations
-- [ ] Keep `initDisplay()` in **display_manager.cpp** and declare in **display_manager.h**.
-- [ ] Keep `initTouchscreen()` and `handleTouchInput()` in **touchscreen.cpp** and declare in **touchscreen.h**.
+- [x] Keep `initDisplay()` in **display_manager.cpp** and declare in **display_manager.h**.
+- [x] Keep `initTouchscreen()` and `handleTouchInput()` in **touchscreen.cpp** and declare in **touchscreen.h**.
 - [ ] Remove/rename duplicates in **main.cpp** and **watch_page.cpp**.
 - [ ] Mark page‑local helpers `static` (or wrap in an anonymous namespace).
 - [ ] Build check: no multiple‑definition link errors for these symbols.
