@@ -1,7 +1,8 @@
-void initInertialSensor() {
-  // Initialize QMI8658 accelerometer
-  // if (!qmi8658.begin()) {
-  //   Serial.println("QMI8658 initialization failed!");
-  //   while (1) { delay(10); }
-  // }
-}
+#ifndef INERTIALSENSOR_H
+#define INERTIALSENSOR_H
+
+#include <Arduino.h>
+
+void initInertialSensor();        // Initialize TEMT6000 ambient light sensor
+
+#endif
