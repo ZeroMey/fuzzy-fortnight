@@ -1,5 +1,3 @@
-// Auto-generated from examples/fourpages/fourpages.ino
-
 #include <Arduino.h>
 #include <lvgl.h>
 #include <Wire.h>
@@ -31,7 +29,7 @@ TaskHandle_t telemetryPageTaskHandle;
 TaskHandle_t screensaverPageTaskHandle;
 TaskHandle_t healthPageTaskHandle;
 
-SEN0502 rotaryEncoder(33, 32);  // DFRobot Rotary Encoder connected to pins 33 and 32
+//SEN0502 rotaryEncoder(33, 32);  // DFRobot Rotary Encoder connected to pins 33 and 32
 
 // Forward declarations for helper initializers (from original sketch)
 static void initPPGSensor();
@@ -63,19 +61,20 @@ void app_setup() {
 
   // Initialize I2C communication
   Wire.begin();  // Initialize I2C (SDA/SCL default pins based on board)
+  
   // Initialize SPI if required for certain sensors
   SPI.begin();
 
   // Initialize the rotary encoder
-  rotaryEncoder.begin();
+  //rotaryEncoder.begin();
 
-  // Initialize sensors (as in original sketch; comment out those you don’t have wired)
-  initPPGSensor();                 // Heart rate / SpO2
-  initSkinTemperatureSensor();     // IR temperature
-  initAmbientLightSensor();        // Ambient light
-  initAmbientTemperatureSensor();  // Temp/Humidity
+  // Initialize sensors (comment out those you don’t have wired)
+  //initPPGSensor();                 // Heart rate / SpO2
+  //initSkinTemperatureSensor();     // IR temperature
+  //initAmbientLightSensor();        // Ambient light
+  //initAmbientTemperatureSensor();  // Temp/Humidity
   initInertialSensor();            // IMU (accelerometer/gyro)
-  initRotaryEncoder();             // Rotary Encoder
+  //initRotaryEncoder();             // Rotary Encoder
 
   // Create LVGL UI pages
   createWatchPage();
@@ -99,22 +98,30 @@ void app_loop() {
   delay(5);  // Small delay for better task switching
 
   // Periodically update rotary encoder state for navigation
-  rotaryEncoder.update();
+  //rotaryEncoder.update();
 
   // Example: Use rotary encoder to switch between pages
-  if (rotaryEncoder.readDirection() == SEN0502::Direction::RIGHT) {
+  //if (rotaryEncoder.readDirection() == SEN0502::Direction::RIGHT) {
     // Switch to next page
     // transitionToPage(next_page_obj);
-  } else if (rotaryEncoder.readDirection() == SEN0502::Direction::LEFT) {
+  //} else if (rotaryEncoder.readDirection() == SEN0502::Direction::LEFT) {
     // Switch to previous page
     // transitionToPage(prev_page_obj);
-  }
+  //}
 
   // Update display (if your display manager does buffered/scheduled updates)
   updateDisplay();
 }
 
-// ---------------------- Page task stubs (from original sketch) ----------------------
+// ---------------------- Page task stubs ----------------------
+
+static void screensaverPageTask(void *pvParameters) {
+  (void)pvParameters;
+  for (;;) {
+    updateScreensaverPage();
+    vTaskDelay(pdMS_TO_TICKS(200));
+  }
+}
 
 static void watchPageTask(void *pvParameters) {
   (void)pvParameters;
@@ -129,14 +136,6 @@ static void telemetryPageTask(void *pvParameters) {
   for (;;) {
     updateTelemetryPage();
     vTaskDelay(pdMS_TO_TICKS(100));
-  }
-}
-
-static void screensaverPageTask(void *pvParameters) {
-  (void)pvParameters;
-  for (;;) {
-    updateScreensaverPage();
-    vTaskDelay(pdMS_TO_TICKS(200));
   }
 }
 
