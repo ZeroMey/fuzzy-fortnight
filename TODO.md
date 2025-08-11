@@ -34,13 +34,13 @@
 - [ ] Add a small unit/compile test for the chosen API.
 
 ## 5) Missing headers referenced by `main.cpp`
-- [ ] Provide or guard/remove includes for:
-  - [ ] `max30102_sensor.h`
-  - [ ] `mlx90614-dss_sensor.h`
-  - [ ] `temt6000_sensor.h`
-  - [ ] `dht22_sensor.h`
-  - [ ] `QMI8658.h`
-  - [ ] `SEN0502.h`
+- [x] Provide or guard/remove includes for:
+  - [x] `max30102_sensor.h`
+  - [x] `mlx90614-dss_sensor.h`
+  - [x] `temt6000_sensor.h`
+  - [x] `dht22_sensor.h`
+  - [x] `QMI8658.h`
+  - [x] `SEN0502.h`
 - [ ] If deferred, wrap with feature macros (e.g., `#if defined(HAVE_MAX30102)` … `#endif`).
 
 ## 6) Declared but not defined
