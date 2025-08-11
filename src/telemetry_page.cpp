@@ -2,9 +2,6 @@
 #include <Adafruit_GFX.h>        // GFX library for display support
 #include <Adafruit_ST7789.h>     // ST7789V2 display driver
 #include <Wire.h>                // I2C library for sensor communication
-#include <DHT.h>                 // DHT22 sensor library
-#include <TEMT6000.h>            // TEMT6000 ambient light sensor library
-#include <MLX90614.h>            // MLX90614 IR temperature sensor library
 
 // Global display object
 extern Adafruit_ST7789 tft;   // Create display object for ST7789 display
