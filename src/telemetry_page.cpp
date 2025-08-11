@@ -126,29 +126,6 @@ void initTelemetryPage() {
     }
 }
 
-// Function to handle touch input for the Telemetry page (using CST816T)
-void handleTelemetryPageTouch() {
-    TS_Point p = touchBus.getPoint();  // Get the current touch point
-
-    if (p.x != -1 && p.y != -1) {  // Check if the screen was touched
-        // Implement touch handling logic (e.g., navigate to other pages)
-        Serial.print("Touch detected at X: ");
-        Serial.print(p.x);
-        Serial.print(", Y: ");
-        Serial.println(p.y);
-
-        // Example: Swipe left to navigate to watch page
-        if (p.x < 100 && p.y > 100 && p.y < 200) {
-            lv_scr_load(watch_page);   // Switch to watch page
-        }
-
-        // Example: Swipe right to navigate to screensaver page
-        if (p.x > 200 && p.y > 100 && p.y < 200) {
-            lv_scr_load(screensaver_page);  // Switch to screensaver page
-        }
-    }
-}
-
 // Function to simulate telemetry updates (for testing purposes)
 void simulateTelemetryPage() {
     updateTelemetryPage();
