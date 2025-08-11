@@ -1,4 +1,8 @@
-void initRotaryEncoder() {
-  // Initialize SEN0502 rotary encoder
-  // sen.begin();
-}
+#ifndef ROTARYENCODER_H
+#define ROTARYENCODER_H
+
+#include <Arduino.h>
+
+void initRotaryEncoder();        // Initialize TEMT6000 ambient light sensor
+
+#endif
