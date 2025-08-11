@@ -1,9 +1,6 @@
 #include "telemetry_page.h"
 #include <Wire.h>                // I2C library for sensor communication
 
-// Global display object
-extern Adafruit_ST7789 tft;   // Create display object for ST7789 display
-
 // Global page object and label variables
 lv_obj_t *telemetry_page;       // Current telemetry page object
 lv_obj_t *temp_label;           // Temperature label
