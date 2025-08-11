@@ -8,8 +8,8 @@
 - [ ] Add a unified `hardware.h`:
   - [x] Declare a single `DisplayT` typedef and `extern DisplayT tft;`
   - [ ] Declare a single touch symbol (e.g., `extern XPT2046_Touchscreen ts;`)
-- [ ] Refactor all modules to include `hardware.h`; remove conflicting `extern` declarations.
-- [ ] Ensure exactly **one** definition of `tft` and the touch symbol exists.
+- [x] Refactor all modules to include `hardware.h`; remove conflicting `extern` declarations.
+- [x] Ensure exactly **one** definition of `tft` and the touch symbol exists.
 - [x] Build check: no type mismatches across translation units.
 
 ## 2) Duplicate functions → single canonical implementations
