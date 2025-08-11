@@ -30,9 +30,6 @@ HWCDC USBSerial;
 #include "main.h"
 
 // Global variables (mirrored from original sketch)
-// NOTE: these depend on your actual wiring/libraries; keep as in your original sketch.
-Adafruit_ILI9341 tft(/*CS=*/5, /*DC=*/2, /*RST=*/4);
-XPT2046_Touchscreen ts(/*CS=*/15, /*IRQ=*/27);
 TaskHandle_t watchPageTaskHandle;
 TaskHandle_t telemetryPageTaskHandle;
 TaskHandle_t screensaverPageTaskHandle;
