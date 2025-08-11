@@ -3,7 +3,6 @@
 #include <Arduino.h>
 #include <lvgl.h>
 #include <Adafruit_GFX.h>
-#include <Adafruit_ILI9341.h>
 #include <Wire.h>
 #include "pin_config.h"
 #include "Arduino_GFX_Library.h"
