@@ -205,12 +205,3 @@ void handleTouchInput() {
     // For example, use touch input to navigate between pages
   }
 }
-
-// ---------------------- Display helpers (from original sketch) ----------------------
-
-// Initialize the display (Adafruit ILI9341)
-void initDisplay() {
-  tft.begin();
-  tft.setRotation(1); // Landscape orientation
-  tft.fillScreen(ILI9341_BLACK); // Clear the display to black
-}
