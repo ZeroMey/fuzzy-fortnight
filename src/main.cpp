@@ -62,7 +62,7 @@ void app_setup() {
   // Initialize LVGL
   lv_init();
 
-  // Initialize the display (Adafruit_ILI9341 using GFX library)
+  // Initialize the display (Adafruit_ST7789 using GFX library)
   initDisplay();
 
   // Initialize the touchscreen
