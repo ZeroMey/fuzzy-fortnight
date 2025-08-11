@@ -110,19 +110,6 @@ void handleSwipeGesture() {
     }
 }
 
-// Function to initialize the display and touchscreen
-void initDisplay() {
-    // Initialize the TFT display
-    tft.begin();
-    tft.setRotation(3);  // Set the display rotation (adjust as needed)
-    tft.fillScreen(ST77XX_BLACK);  // Clear the display to black
-}
-
-void initTouchscreen() {
-    touchBus.begin();  // Initialize the touch input
-    // You can adjust touch parameters if needed (e.g., calibrate, set rotation)
-}
-
 // Function to simulate time and battery decrease (for testing purposes)
 void simulateWatchPage() {
     updateWatchPage();
