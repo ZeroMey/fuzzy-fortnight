@@ -17,27 +17,18 @@ void initPPGSensor() {
 int pollPPGSensorSP0() {
   MAX30102.getHeartbeatSPO2();
   return Serial.print(MAX30102._sHeartbeatSPO2.SPO2;
-  //The sensor updates the data every 4 seconds
-  //delay(4000);
-  //Serial.println("stop measuring...");
   MAX30102.sensorEndCollect();
 }
 
 int pollPPGSensorHeartbeat() {
   MAX30102.getHeartbeatSPO2();
   return MAX30102._sHeartbeatSPO2.Heartbeat;
-  //The sensor updates the data every 4 seconds
-  //delay(4000);
-  //Serial.println("stop measuring...");
   MAX30102.sensorEndCollect();
 }
 
 float pollPPGSensorTemperature() {
   MAX30102.getHeartbeatSPO2();
   return MAX30102.getTemperature_C());
-  //The sensor updates the data every 4 seconds
-  //delay(4000);
-  //Serial.println("stop measuring...");
   MAX30102.sensorEndCollect();
 }
 
