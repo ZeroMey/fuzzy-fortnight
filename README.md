@@ -32,7 +32,8 @@ Skeleton firmware for an LVGL-based watch/GUI: display and input managers plus U
 ├─ tests/
 │ └─ onepage_main.[h|cpp]
 │ └─ twopages_main.[h|cpp]
-└─ README.md
+├─ README.md
+└─ TODO.md
 ```
 
 ## Modules
