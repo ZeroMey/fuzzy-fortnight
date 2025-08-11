@@ -24,7 +24,14 @@ Skeleton firmware for an LVGL-based watch/GUI: display and input managers plus U
 │ └─ utils.[h|cpp]
 ├─ examples/
 │ └─ fourpages/
-│ └─ fourpages.ino
+│   └─ fourpages.ino
+│ └─ twopages/
+│   └─ twopages.ino
+│ └─ onepage/
+│   └─ onepage.ino
+├─ tests/
+│ └─ onepage_main.[h|cpp]
+│ └─ twopages_main.[h|cpp]
 └─ README.md
 ```
 
