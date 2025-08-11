@@ -2,6 +2,7 @@
 #include <Adafruit_GFX.h>        // GFX library for display support
 #include <Adafruit_ST7789.h>     // ST7789V2 display driver
 #include <lvgl.h>                // LVGL library for UI management
+#include "Arduino_GFX_Library.h"
 
 // Global display object
 extern Adafruit_ST7789 tft;   // Create display object for ST7789 display
