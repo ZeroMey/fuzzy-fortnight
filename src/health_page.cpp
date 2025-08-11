@@ -1,8 +1,6 @@
 #include "health_page.h"
 #include <Adafruit_GFX.h>        // GFX library for display support
 #include <Adafruit_ST7789.h>     // ST7789V2 display driver
-#include <Wire.h>                // I2C library for sensor communication
-#include <MAX30105.h>            // MAX30102 sensor library
 
 // Global display object
 extern Adafruit_ST7789 tft;   // Create display object for ST7789 display
