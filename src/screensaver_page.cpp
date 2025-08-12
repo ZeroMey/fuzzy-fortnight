@@ -1,9 +1,9 @@
 #include "screensaver_page.h"
 
 // Global page object and label variables
-lv_obj_t *screensaver_page;       // Current screensaver page object
-lv_obj_t *time_label;             // Time label
-lv_obj_t *status_label;           // Status label
+static lv_obj_t *screensaver_page;       // Current screensaver page object
+static lv_obj_t *time_label;             // Time label
+static lv_obj_t *status_label;           // Status label
 
 // Function to create the Screensaver page UI elements
 void createScreensaverPage() {
