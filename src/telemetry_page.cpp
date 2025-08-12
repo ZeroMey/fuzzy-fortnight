@@ -3,11 +3,11 @@
 
 // Global page object and label variables
 lv_obj_t *telemetry_page;       // Current telemetry page object
-lv_obj_t *temp_label;           // Temperature label
-lv_obj_t *humidity_label;       // Humidity label
-lv_obj_t *light_label;          // Light intensity label
-lv_obj_t *ir_temp_label;        // IR temperature label
-lv_obj_t *status_label;         // Status label
+static lv_obj_t *temp_label;           // Temperature label
+static lv_obj_t *humidity_label;       // Humidity label
+static lv_obj_t *light_label;          // Light intensity label
+static lv_obj_t *ir_temp_label;        // IR temperature label
+static lv_obj_t *status_label;         // Status label
 
 // DHT22 sensor object (for temperature and humidity)
 //DHT dht(2, DHT22);  // DHT sensor on pin 2 (adjust as needed)
