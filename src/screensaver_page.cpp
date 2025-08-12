@@ -1,7 +1,7 @@
 #include "screensaver_page.h"
 
 // Global page object and label variables
-static lv_obj_t *screensaver_page;       // Current screensaver page object
+lv_obj_t *screensaver_page;       // Current screensaver page object
 static lv_obj_t *time_label;             // Time label
 static lv_obj_t *status_label;           // Status label
 
