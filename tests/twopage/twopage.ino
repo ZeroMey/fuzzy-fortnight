@@ -5,6 +5,8 @@
 #include "Arduino_DriveBus_Library.h"
 #include "pin_config.h"
 #include "lv_conf.h"
+#include <demos/lv_demos.h>
+#include "image.h"
 
 // --- Display (ST7789 240x280, 20px top offset set here) ---
 Arduino_DataBus *bus = new Arduino_ESP32SPI(LCD_DC, LCD_CS, LCD_SCK, LCD_MOSI);
@@ -116,7 +118,6 @@ void setup() {
   lv_obj_t *label = lv_label_create(lv_scr_act());
   lv_label_set_text(label, "Hello Ardino and LVGL!");
   lv_obj_align(label, LV_ALIGN_CENTER, 0, 0);
-  delay(3000)
 
   // UI
   //build_ui();
