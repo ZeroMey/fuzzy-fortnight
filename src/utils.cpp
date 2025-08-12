@@ -7,7 +7,7 @@ float convertToFahrenheit(float celsius) {
 }
 
 // Function to format temperature data for display
-char* formatTemperature(float tempCelsius) {
+float formatTemperature(float tempCelsius) {
     static char tempStr[10];
     snprintf(tempStr, sizeof(tempStr), "%.1f°C", tempCelsius);  // Format temperature in Celsius
     return tempStr;
