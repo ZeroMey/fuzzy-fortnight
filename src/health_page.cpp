@@ -2,9 +2,9 @@
 
 // Global page object and label variables
 lv_obj_t *health_page;         // Current health page object
-lv_obj_t *heart_rate_label;    // Heart rate label
-lv_obj_t *spo2_label;          // SpO2 label
-lv_obj_t *status_label;        // Status label
+static lv_obj_t *heart_rate_label;    // Heart rate label
+static lv_obj_t *spo2_label;          // SpO2 label
+static lv_obj_t *status_label;        // Status label
 
 // MAX30102 sensor object
 MAX30105 particleSensor;
