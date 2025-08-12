@@ -1,7 +1,7 @@
 #include "watch_page.h"
 
 // Global page object and label variables
-static lv_obj_t *watch_page;          // Current watch page object
+lv_obj_t *watch_page;          // Current watch page object
 static lv_obj_t *time_label;
 static lv_obj_t *date_label;
 static lv_obj_t *battery_label;
