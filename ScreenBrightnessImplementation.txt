@@ -1,0 +1,58 @@
+Your PWM gets clobbered by this later code:
+
+pinMode(LCD_BL, OUTPUT);
+digitalWrite(LCD_BL, HIGH);   // forces full brightness, overriding LEDC
+Also, ledcAttach(LCD_BL, 500, 8) sets only 500 Hz / 8-bit (comment says 20 kHz / 12-bit). Fix by driving the backlight only via LEDC (one channel), never digitalWrite, and keep a global setter.
+
+
+Minimal changes
+Remove these two lines:
+
+pinMode(LCD_BL, OUTPUT);
+digitalWrite(LCD_BL, HIGH);
+
+
+Replace your current LEDC calls with an explicit channel + init + setter:
+
+// ---- Backlight control (global) ----
+#define BL_CHANNEL   0
+#define BL_FREQ      20000       // 20 kHz to avoid flicker
+#define BL_RES_BITS  12          // 0..4095 duty
+#define BL_MAX_DUTY  ((1U << BL_RES_BITS) - 1)
+#define BL_INVERT    0           // set to 1 if your BL transistor is active-low
+
+static uint8_t g_bl_pct = 30;    // global app brightness, 0..100
+
+static void backlight_apply(void) {
+  uint32_t duty = (g_bl_pct * BL_MAX_DUTY) / 100;
+  if (BL_INVERT) duty = BL_MAX_DUTY - duty;
+  ledcWrite(BL_CHANNEL, duty);
+}
+
+static void backlight_set_pct(uint8_t pct) {
+  if (pct > 100) pct = 100;
+  g_bl_pct = pct;
+  backlight_apply();
+}
+
+static void backlight_init(uint8_t initial_pct) {
+  ledcSetup(BL_CHANNEL, BL_FREQ, BL_RES_BITS);
+  ledcAttachPin(LCD_BL, BL_CHANNEL);
+  g_bl_pct = initial_pct;
+  backlight_apply();
+}
+
+
+Call once in setup() before/after gfx->begin() (order doesn’t matter), and don’t touch the BL pin elsewhere:
+
+gfx->begin();
+backlight_init(30);     // set your app-wide default
+Now the brightness is a true global setting that persists while LVGL runs.
+Use backlight_set_pct(x) anywhere (e.g., from a slider callback) to update it.
+
+
+Optional: for perceptual linearity add gamma:
+
+// inside backlight_apply(), replace duty line with:
+float g = 2.2f;
+uint32_t duty = (uint32_t)(powf(g_bl_pct / 100.0f, g) * BL_MAX_DUTY + 0.5f);
