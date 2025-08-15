@@ -44,12 +44,12 @@ Arduino_GFX *gfx = new Arduino_ST7789(bus, LCD_RST /* RST */,
 std::shared_ptr<Arduino_IIC_DriveBus> IIC_Bus =
   std::make_shared<Arduino_HWIIC>(IIC_SDA, IIC_SCL, &Wire);
 
-void Arduino_IIC_Touch_Interrupt(void);
+void IRAM_ATTR Arduino_IIC_Touch_Interrupt(void);
 
 std::unique_ptr<Arduino_IIC> CST816T(new Arduino_CST816x(IIC_Bus, CST816T_DEVICE_ADDRESS,
                                                          TP_RST, TP_INT, Arduino_IIC_Touch_Interrupt));
 
-void Arduino_IIC_Touch_Interrupt(void) {
+void IRAM_ATTR Arduino_IIC_Touch_Interrupt(void) {
   CST816T->IIC_Interrupt_Flag = true;
 }
 
@@ -99,20 +99,32 @@ void example_increase_reboot(void *arg) {
 
 /*Read the touchpad*/
 void my_touchpad_read(lv_indev_drv_t *indev_driver, lv_indev_data_t *data) {
-  int32_t touchX = CST816T->IIC_Read_Device_Value(CST816T->Arduino_IIC_Touch::Value_Information::TOUCH_COORDINATE_X);
-  int32_t touchY = CST816T->IIC_Read_Device_Value(CST816T->Arduino_IIC_Touch::Value_Information::TOUCH_COORDINATE_Y);
+  if (!CST816T->IIC_Interrupt_Flag) {
+    data->state = LV_INDEV_STATE_REL;
+    return;
+  }
 
-  if (CST816T->IIC_Interrupt_Flag == true) {
-    CST816T->IIC_Interrupt_Flag = false;
-    data->state = LV_INDEV_STATE_PR;
+  // Short, non-blocking take to avoid UI jitter
+  if (xSemaphoreTake(i2cMutex, pdMS_TO_TICKS(5)) != pdTRUE) {
+    data->state = LV_INDEV_STATE_REL;
+    return;
+  }
 
-    /* Set the coordinates with some debounce */
-    if (touchX >= 0 && touchY >= 0) {
-      data->point.x = touchX;
-      data->point.y = touchY;
+  CST816T->IIC_Interrupt_Flag = false;
 
-      USBSerial.printf("Data x: %d, Data y: %d\n", touchX, touchY);
-    }
+  const int32_t touchX = CST816T->IIC_Read_Device_Value(
+      CST816T->Arduino_IIC_Touch::Value_Information::TOUCH_COORDINATE_X);
+  const int32_t touchY = CST816T->IIC_Read_Device_Value(
+      CST816T->Arduino_IIC_Touch::Value_Information::TOUCH_COORDINATE_Y);
+
+  xSemaphoreGive(i2cMutex);
+
+  /* Set the coordinates with some debounce */
+  if (touchX >= 0 && touchY >= 0) {
+    data->state   = LV_INDEV_STATE_PR;
+    data->point.x = touchX;
+    data->point.y = touchY;
+     USBSerial.printf("Data x: %d, Data y: %d\n", touchX, touchY);
   } else {
     data->state = LV_INDEV_STATE_REL;
   }
@@ -207,6 +219,15 @@ static void ui_timer_cb(lv_timer_t *t) {
     // show one decimal
     snprintf(gbuf, sizeof(gbuf), "gx=%.1f dps\ngy=%.1f dps\ngz=%.1f dps", snap.gx, snap.gy, snap.gz);
     lv_label_set_text(gyro_label, gbuf);
+  }
+}
+
+void lvglTask(void *arg) {
+  const TickType_t period = pdMS_TO_TICKS(5); // ~200 Hz
+  TickType_t last = xTaskGetTickCount();
+  for (;;) {
+    lv_timer_handler();
+    vTaskDelayUntil(&last, period);
   }
 }
 
@@ -411,12 +432,14 @@ void setup() {
   lv_timer_create(ui_timer_cb, 200, nullptr);
 
   // After timers are started and UI built:
+  xTaskCreatePinnedToCore(lvglTask, "lvgl", 6144, nullptr, 5, nullptr, 1); // core 1
   xTaskCreatePinnedToCore(rtcTask, "rtcTask", 4096, nullptr, 3, nullptr, 0);
   xTaskCreatePinnedToCore(imuTask, "imuTask", 4096, nullptr, 3, nullptr, 0);
 
 }
 
 void loop() {
-  lv_timer_handler(); /* let the GUI do its work */
-  delay(5);
+  vTaskDelay(pdMS_TO_TICKS(1000));
+  //lv_timer_handler(); /* let the GUI do its work */
+  //delay(5);
 }
